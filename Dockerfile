@@ -6,4 +6,4 @@ RUN curl -L https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_
 
 EXPOSE 8080
 
-CMD ["gotty", "-p", "8080", "bash", "-c", "while true; do echo running; sleep 1; done"]
+CMD ["gotty", "-p", "8080", "bash"]
