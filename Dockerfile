@@ -1,12 +1,8 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
-
-RUN apt update -y && apt install -y htop zip curl sudo openssl
-
-RUN curl -L https://downloads.sourceforge.net/project/shellinabox/shellinabox/2.22/shellinabox-2.22.tar.gz | tar xz \
-    && cd shellinabox-2.22 \
-    && ./configure --prefix=/usr/local --disable-ssl --with-css=/usr/share/shellinabox/black.css \
-    && make && make install
-
-EXPOSE 4200
-
-CMD ["shellinaboxd", "--no-beep", "--disable-ssl", "--port", "4200", "--user-css", "/usr/share/shellinabox/black.css"]
+RUN apt-get update && \
+    apt-get install -y shellinabox && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN echo 'root:' | chpasswd
+EXPOSE 20 21 22 80 443 888 8888 3306 39000-40000
+CMD ["/usr/bin/shellinaboxd", "-t", "-s", "/:LOGIN"]
