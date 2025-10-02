@@ -9,5 +9,5 @@ RUN echo 'root:1234' | chpasswd
 #    tmate -F ssh new-session -d && \
 #    tmate display -p '#{tmate_ssh}' && \
 CMD bash -c "\
-    exec /usr/bin/shellinaboxd -t -s /:root:1234 --no-beep --disable-ssl --port 4200\
+    exec /usr/bin/shellinaboxd -t -s /:LOGIN --no-beep --disable-ssl --port 4200\
 "
